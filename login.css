@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  header{
+    height: 150px;
+    font-size: 30px;
+    background-color: rgb(81, 39, 167);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #loginBox {
+    width: 300px;
+    height: 500px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+  }
+  #loginButt {
+    width: 355px;
+    height: 90px;
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    background-color: rgb(81, 39, 167);
+    color: white;
+  }
+  table {
+    font-size: 20px;
+  }
+  .th {
+    color: rgb(101, 101, 102);
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+  input {
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 1px solid rgb(199, 197, 203);
+    padding-left: 8px;
+    color: rgb(81, 81, 82);
+  }
+  #rememberCheck{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: rgb(101, 101, 102);
+    font-size: 15px;
+  }
+  #checkbox{
+    width: 15px;
+    margin: 0px 5px 0px 2px;
+  }

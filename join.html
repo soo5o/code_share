@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link href="join.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+        <h1>3# MALL</h1>
+    </header>
+    <div id="joinBox">
+      <form id="joinForm">
+        <table>
+            <tr>
+                <td class="th">NAME</td>
+                <td>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    placeholder="Enter your name"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="th">EMAIL</td>
+                <td>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder="Enter your email"
+                  />
+                </td>
+              </tr>  
+          <tr>
+            <td class="th">ID</td>
+            <td>
+              <input
+                type="text"
+                name="id"
+                id="id"
+                required
+                placeholder="Enter your id"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td class="th">PASSWORD</td>
+            <td>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                minlength="8"
+                required
+                placeholder="Enter password"
+              />
+            </td>
+          </tr>
+        </table>
+        <div id="buttonBox">
+        <input class="jButt" type="submit" value="JOIN" />
+        <input class="jButt" type="button" value="CANCEL" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  document
+    .getElementById('joinForm')
+    .addEventListener('submit', function (event) {
+      event.preventDefault(); // 기본 제출 방지
+      if (this.checkValidity()) {
+        window.location.href = 'index.html'; // 검증 성공 시 이동
+      }
+    });
+</script>
