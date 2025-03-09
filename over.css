@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url('https://denim-map-3f5.notion.site/image/attachment%3Ae0f54afd-7338-4eab-badf-4234738de855%3Abg.jpg?table=block&id=1afabd06-af53-8123-89f6-cea8170dd87d&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=1360&userId=&cache=v2');
+}
+.container{
+    padding: 50px 0;
+}
+.heroes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 660px;
+    margin:0 auto;
+    padding: 40px 20px;
+}
+.hero{
+    width: 80px;
+    height: 84px;
+    margin: 4px;
+    border: 3px solid whitesmoke;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #555;
+    transform: skewX(-14deg);
+    transition:
+      transform .1s,
+      background-color .6s;
+}
+.hero:hover{
+    background-color: #ff9c00;
+    transform: skewX(-14deg) scale(1.3);
+    z-index: 1;
+}
+.hero .image{
+    width: 140%;
+    height: 100%;
+    transform: translateX(-16px) skewX(14deg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90px;
+}
+.hero:nth-child(1) .image { background-image: url('https://denim-map-3f5.notion.site/image/attachment%3A72d33993-7831-4052-ab56-55ef86f662e8%3Ahero1.png?table=block&id=1afabd06-af53-8181-9ba6-ea325c233a8a&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2'); }
+.hero:nth-child(2) .image { background-image: url('https://denim-map-3f5.notion.site/image/attachment%3Aeb262c62-f29c-4af0-9adb-3c0f8e4fd4bc%3Ahero2.png?table=block&id=1afabd06-af53-81cc-bbaf-fb3d7b27376a&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2'); }
+.hero:nth-child(3) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A4e5bdc5d-2d47-4197-883c-dce1bc64f7e1%3Ahero3.png?table=block&id=1afabd06-af53-81d1-912e-eed2d4fc2b13&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(4) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A1edaa1fb-4501-4315-bc37-ea42b2e9c480%3Ahero4.png?table=block&id=1afabd06-af53-81be-adce-cfe1225b4275&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(5) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Ad74b7f60-550c-48b1-8e0d-6ae8cacddf16%3Ahero5.png?table=block&id=1afabd06-af53-815a-b39c-ca66a59c386c&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(6) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A1423f2d9-0e2a-438c-9209-4269d27e8e54%3Ahero6.png?table=block&id=1afabd06-af53-81e5-b996-ef6630f0be6c&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(7) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A833765c9-e4aa-4942-968a-dc087f19fbdb%3Ahero7.png?table=block&id=1afabd06-af53-81e5-bc43-fc175eb27000&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(8) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Af7d20c20-4885-42f6-871a-1fdb310679db%3Ahero8.png?table=block&id=1afabd06-af53-81b7-95d3-f79acb6dfa35&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(9) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A2c369b64-5a12-4e1b-8bc7-950074545781%3Ahero9.png?table=block&id=1afabd06-af53-8149-8ba5-cfbc70dbe33e&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(10) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A0e4b75d6-d6e8-4cb9-a9c5-76fba3adf654%3Ahero10.png?table=block&id=1afabd06-af53-8176-b21c-ed028812c8f0&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+
+.hero:nth-child(11) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A3de36327-cd2c-4a1d-8885-2ed4af936193%3Ahero11.png?table=block&id=1afabd06-af53-8164-9111-d8d130aca9ad&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(12) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A48bf9fcc-56dd-45c2-86e4-137523f08e7e%3Ahero12.png?table=block&id=1afabd06-af53-81a1-90ab-dae1db9f2ff6&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(13) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Af80dade1-77bf-413f-adc5-b1990c94f60a%3Ahero13.png?table=block&id=1afabd06-af53-813b-9fe4-ffef208a2105&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(14) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A92adba59-4d1e-4363-8503-fbaeac1d55ea%3Ahero14.png?table=block&id=1afabd06-af53-8137-b60b-eddace7a8359&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(15) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Af879228e-c7a3-4047-8f53-9d71b87da94d%3Ahero15.png?table=block&id=1afabd06-af53-81cc-b976-f6b0a8a4c745&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(16) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Ae4816fc1-b4fb-4e2b-b968-d4ff3129618b%3Ahero16.png?table=block&id=1afabd06-af53-8163-b6c8-c116d1611223&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(17) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A13ab1a07-71bd-49a7-a7ab-5e6c4d6fc7ff%3Ahero17.png?table=block&id=1afabd06-af53-81fa-bb4e-f39b205733bd&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(18) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A641df192-73dd-4234-bf6a-5db3d692889d%3Ahero18.png?table=block&id=1afabd06-af53-81fa-99e6-ec8447422efe&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(19) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A4ef281e4-6f00-4ef9-b640-e7f49774be39%3Ahero19.png?table=block&id=1afabd06-af53-813a-9042-d8b589f9765d&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(20) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Ae4ce2960-6cb9-49da-8b94-6ada991dfc75%3Ahero20.png?table=block&id=1afabd06-af53-817a-86eb-eb049024631e&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+
+.hero:nth-child(21) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A5b5eb23b-2c41-4c2e-88cd-9cfc2795002a%3Ahero21.png?table=block&id=1afabd06-af53-8157-ab05-c7432efaa077&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(22) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Af4176709-2b2a-4e65-ac04-c6ed245a0c0d%3Ahero22.png?table=block&id=1afabd06-af53-8117-ae1b-f12654520506&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(23) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A501cf4e8-e479-4929-946b-44fe7205e5b0%3Ahero23.png?table=block&id=1afabd06-af53-81a4-88ac-ee7f0b5b84d6&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(24) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Ac72dddd7-a56f-45a6-b028-6a80d9a1ddf1%3Ahero24.png?table=block&id=1afabd06-af53-8190-8e42-fe3f37c9e148&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(25) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A10ce69f6-d484-4021-ba76-07c670033dd2%3Ahero25.png?table=block&id=1afabd06-af53-818e-8d10-f920822eac49&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(26) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A448c5f0e-5987-4fae-aac0-cb8377f7ce02%3Ahero26.png?table=block&id=1afabd06-af53-819f-8d58-cf63bfb81179&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(27) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A3e214a56-371a-4be2-a07d-661d02e7eb11%3Ahero27.png?table=block&id=1afabd06-af53-8129-b660-f540f3203a3e&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(28) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A19d02984-9e78-489b-a418-b560dc525657%3Ahero28.png?table=block&id=1afabd06-af53-8131-a5f5-ef8f405c537e&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(29) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A70801fac-8e58-45f2-ab01-f939dff8472f%3Ahero29.png?table=block&id=1afabd06-af53-81fe-8344-e68fc347db9d&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(30) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A07eebcf8-01c5-49b0-aaa7-4d5973b5eb03%3Ahero30.png?table=block&id=1afabd06-af53-8147-88c4-f0d37a348ef2&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+
+.hero:nth-child(31) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3A1b489bb5-1b0f-4d86-bde9-b7680df8d3b8%3Ahero31.png?table=block&id=1afabd06-af53-81f2-b4be-f6b95e5668ab&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+.hero:nth-child(32) .image { background-image: url("https://denim-map-3f5.notion.site/image/attachment%3Ac875ed68-9a2f-4679-8639-4ea8c6c96f32%3Ahero32.png?table=block&id=1afabd06-af53-81a3-a930-f05eed327259&spaceId=d85d6989-e5f8-4b4b-9c19-03c42591dd96&width=330&userId=&cache=v2"); }
+
+.bottomLogo{
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.bottomLogo img{
+    width: 100%;
+}
