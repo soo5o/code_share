@@ -1,17 +1,11 @@
-import path from 'path';
 import fs from 'fs';
-import { fileURLToPath } from 'url';
-
-// 현재 파일의 경로를 가져오는 코드 (CommonJS의 `__filename`, `__dirname` 대체)
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export class PetRecommender {
   constructor() {
     this.customers = [];
   }
   recommendPet(customer) {
-    const { lifestyle, housing, familyMembers } = customer; //분해 할당
+    const { name, lifestyle, housing, familyMembers } = customer; //분해 할당
     if (
       lifestyle === '활동적' &&
       housing === '단독주택' &&
@@ -25,12 +19,11 @@ export class PetRecommender {
     ) {
       customer.recommenedPet = '고양이';
     }
-    this.customers.push(customer);
+    this.customers.push({ name: name, recommenedPet: customer.recommenedPet });
   }
   saveToFile() {
-    fs.promises.appendFile(
-      `${__dirname}/pet_recommendations.json`,
-      this.customers
-    );
+    console.log(this.customers);
+    // JSON 파일로 저장
+    fs.promises.appendFile(`./pet_recommendations.json`, this.customers);
   }
 }
