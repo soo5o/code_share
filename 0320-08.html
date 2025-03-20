@@ -13,46 +13,100 @@
           type="button"
           value="출입 기록 추가"
           @click="addRecord"
+          :disabled="isLibraryFull"
         />
       </div>
-      <div v-show="false" style="color: red">
+      <div v-show="isLibraryFull" style="color: red">
         ⚠ 현재 도서관 인원 포화 상태입니다! 더 이상 출입할 수 없습니다.
       </div>
       <h2>📜현재 도서관 출입 중 (최근 순):</h2>
       <ul>
-        <li v-for="(wizard,index) in wizards" :key="wizard">
-          {{index+1}}. {{wizard}} <button @click="remove(item)">퇴장</button>
+        <li v-for="(wizard, index) in sortedWizards" :key="wizard">
+          {{index+1}}. {{wizard}} <button @click="remove(wizard)">퇴장</button>
         </li>
       </ul>
       <h2>✨ 출입 횟수 통계</h2>
       <ul>
-        <li v-for=""></li>
+        <li v-for="(count, wizard) in wizardStats" :key="wizard">
+          {{ wizard }}: {{ count }}회 출입
+        </li>
       </ul>
+      <div v-show="count && getMx">
+        가장 많이 출입한 마법사: {{mxName}} ({{mxCnt}}회)
+      </div>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script>
       let vm = Vue.createApp({
-        name: 'App',
+        name: "App",
         data() {
-          return { count: 0, wizards: [], name: '' };
+          return {
+            count: 0,
+            wizards: [],
+            name: "",
+            history: {},
+            mxName: "",
+            mxCnt: 0,
+          };
+        },
+        watch: {
+          wizards(current) {
+            if (current.length >= 5) {
+              console.warn("⚠ 현재 도서관 인원 포화!");
+            }
+          },
+        },
+        computed: {
+          isLibraryFull() {
+            return this.wizards.length >= 5;
+          },
+          wizardStats() {
+            return this.history;
+          },
+          sortedWizards() {
+            return [...this.wizards].reverse();
+          },
+          getMx() {
+            let tmp = 0;
+            for (let h in this.history) {
+              if (this.history[h] > tmp) {
+                tmp = this.history[h];
+                this.mxName = h;
+              }
+            }
+            this.mxCnt = tmp;
+            return true;
+          },
         },
         methods: {
           addRecord() {
-            count++;
-            console.log('📝 출입 기록 추가!');
+            if (this.wizards.includes(this.name)) {
+              console.warn(`⚠ ${this.name}은(는) 이미 출입 중입니다.`);
+              return;
+            }
+            this.wizards.push(this.name);
+            console.log("📝 출입 기록 추가!");
+           
+            if (this.history[this.name]) {
+              this.history[this.name]++;
+            } else {
+              this.history[this.name] = 1;
+            }
+            this.name = "";
+            this.count++;
           },
-          remove(item) {
-            this.wizards = this.wizards.filter((el) => el !== item);
+          remove(wizard) {
+            this.wizards = this.wizards.filter((el) => el !== wizard);
           },
         },
         created() {
-          console.log('📚 도서관 관리 시스템 가동!');
+          console.log("📚 도서관 관리 시스템 가동!");
         },
         mounted() {
-          console.log('✅ 도서관 준비 완료!');
+          console.log("✅ 도서관 준비 완료!");
         },
-      }).mount('#app');
+      }).mount("#app");
     </script>
   </body>
 </html>
