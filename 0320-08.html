@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Framework</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>📚호그와트 마법 도서관 출입 관리 시스템</h1>
+      <div>
+        마법사 이름 입력: <input type="text" v-model="name" /><input
+          type="button"
+          value="출입 기록 추가"
+          @click="addRecord"
+        />
+      </div>
+      <div v-show="false" style="color: red">
+        ⚠ 현재 도서관 인원 포화 상태입니다! 더 이상 출입할 수 없습니다.
+      </div>
+      <h2>📜현재 도서관 출입 중 (최근 순):</h2>
+      <ul>
+        <li v-for="(wizard,index) in wizards" :key="wizard">
+          {{index+1}}. {{wizard}} <button @click="remove(item)">퇴장</button>
+        </li>
+      </ul>
+      <h2>✨ 출입 횟수 통계</h2>
+      <ul>
+        <li v-for=""></li>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { count: 0, wizards: [], name: '' };
+        },
+        methods: {
+          addRecord() {
+            count++;
+            console.log('📝 출입 기록 추가!');
+          },
+          remove(item) {
+            this.wizards = this.wizards.filter((el) => el !== item);
+          },
+        },
+        created() {
+          console.log('📚 도서관 관리 시스템 가동!');
+        },
+        mounted() {
+          console.log('✅ 도서관 준비 완료!');
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
