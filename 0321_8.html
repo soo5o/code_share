@@ -22,7 +22,7 @@
       <div class="container mt-3">
         <h1>8번 고급 문제: 지하철 퀴즈 - 랜덤 5문제 & 점수판</h1>
         <div class="mt-4">
-          <!-- 질문 -->
+          <!-- 질문 칸 . idx로 배열을 가져와서 클릭할 때마다 idx++ -->
         </div>
         <div>
           <button class="btn btn-success" @click="checkAns">예</button
@@ -44,6 +44,7 @@
         name: 'App',
         data() {
           return {
+            idx:0,
             questions: [
               { q: '태양은 행성이다.', a: 'no' },
               { q: '조선의 첫 번째 왕은 세종대왕이다.', a: 'no' },
