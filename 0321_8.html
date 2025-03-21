@@ -20,44 +20,109 @@
   <body>
     <div id="app">
       <div class="container mt-3">
-        <h1>8번 고급 문제: 지하철 퀴즈 - 랜덤 5문제 & 점수판</h1>
-        <div class="mt-4">
-          <!-- 질문 칸 . idx로 배열을 가져와서 클릭할 때마다 idx++ -->
+        <h1 class="mb-4">8번 고급 문제: 지하철 퀴즈 - 랜덤 5문제 & 점수판</h1>
+        <div v-show="idx < 5">
+          <div class="mb-2">
+            <strong>Q{{idx+1}}. {{questions[idx].q}}</strong>
+          </div>
+          <div>
+            <button class="btn btn-success" @click="checkAns('yes')">예</button
+            ><button class="btn btn-danger ms-3" @click="checkAns('no')">
+              아니오
+            </button>
+          </div>
         </div>
-        <div>
-          <button class="btn btn-success" @click="checkAns">예</button
-          ><button class="btn btn-danger ms-3" @click="checkAns">아니오</button>
+        <div v-show="idx == 5">
+          <div class="card shadow p-3">
+            <h4 class="card-title">🏆 퀴즈 완료!</h4>
+            <div class="mb-5">
+              당신의 점수는 <strong>{{score}}/5</strong>점 입니다!
+            </div>
+            <div class="list-group">
+              <div
+                class="list-group-item d-flex justify-content-between"
+                v-for="(lst, idx) in result"
+                :key="idx"
+              >
+                <div>Q{{idx+1}}. {{lst.q}}</div>
+                <div>
+                  <i
+                    class="fa-solid me-1"
+                    :class="lst.rst == '정답'? 'fa-award text-success' : 'fa-face-frown text-danger'"
+                  ></i
+                  >{{lst.rst}}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <button
-          v-for="t in time"
-          class="btn btn-outline-primary me-2 mt-2"
-          @click="getTime(t)"
+        <div
+          v-show="msg.length != 0"
+          class="alert mt-3"
+          :class="msg == '정답입니다!' ? 'alert-success' : 'alert-danger'"
         >
-          <i class="fa-solid fa-clock me-2"></i>{{t}}
-        </button>
+          <i class="fa-solid me-2" :class="msgIcon"></i>{{msg}}
+        </div>
       </div>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script>
       let vm = Vue.createApp({
-        name: 'App',
+        name: "App",
         data() {
           return {
-            idx:0,
+            idx: 0,
+            msg: "",
+            msgIcon: "",
+            score: 0,
             questions: [
-              { q: '태양은 행성이다.', a: 'no' },
-              { q: '조선의 첫 번째 왕은 세종대왕이다.', a: 'no' },
-              { q: '0은 짝수이다.', a: 'yes' },
-              { q: '바나나는 나무에서 자란다.', a: 'no' },
-              { q: '펭귄은 날 수 없다.', a: 'yes' },
+              { q: "태양은 행성이다.", a: "no" },
+              { q: "조선의 첫 번째 왕은 세종대왕이다.", a: "no" },
+              { q: "0은 짝수이다.", a: "yes" },
+              { q: "바나나는 나무에서 자란다.", a: "no" },
+              { q: "펭귄은 날 수 없다.", a: "yes" },
+              { q: "딸기는 맛있다.", a: "yes" },
+              { q: "이재용은 인도 사람이다.", a: "no" },
             ],
+            result: [],
           };
         },
-        methods: {
-          checkAns() {},
+        computed: {
+          randomItems() {
+            return this.questions.sort(() => Math.random() - 0.5).slice(0, 5);
+          },
         },
-      }).mount('#app');
+        methods: {
+          checkAns(ans) {
+            if (this.idx <= 4) {
+              setTimeout(() => {
+                this.idx++;
+                this.msg = "";
+              }, 1000);
+              if (this.questions[this.idx].a == ans) {
+                this.msg = "정답입니다!";
+                this.msgIcon = "fa-award";
+                this.score++;
+                this.result.push({
+                  q: this.questions[this.idx].q,
+                  rst: "정답",
+                });
+              } else {
+                this.msg = "틀렸어요!";
+                this.msgIcon = "fa-face-frown";
+                this.result.push({
+                  q: this.questions[this.idx].q,
+                  rst: "오답",
+                });
+              }
+            }
+          },
+        },
+        mounted() {
+          this.randomItems;
+        },
+      }).mount("#app");
     </script>
   </body>
 </html>
