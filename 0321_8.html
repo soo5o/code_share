@@ -21,18 +21,34 @@
     <div id="app">
       <div class="container mt-3">
         <h1 class="mb-4">8번 고급 문제: 지하철 퀴즈 - 랜덤 5문제 & 점수판</h1>
-        <div v-show="idx < 5">
+        <!-- 로딩 -->
+        <div v-if="cpLst.length == 0">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <!-- 퀴즈 -->
+        <div v-if="idx < 5 && cpLst.length > 0">
           <div class="mb-2">
-            <strong>Q{{idx+1}}. {{questions[idx].q}}</strong>
+            <strong>Q{{idx+1}}. {{cpLst[idx].q}}</strong>
           </div>
           <div>
-            <button class="btn btn-success" @click="checkAns('yes')">예</button
-            ><button class="btn btn-danger ms-3" @click="checkAns('no')">
+            <button
+              class="btn btn-success"
+              @click="checkAns('yes')"
+              :disabled="btnBool"
+            >
+              예</button
+            ><button
+              class="btn btn-danger ms-3"
+              @click="checkAns('no')"
+              :disabled="btnBool"
+            >
               아니오
             </button>
           </div>
         </div>
-        <div v-show="idx == 5">
+        <div v-if="idx == 5 && cpList.length != 0">
           <div class="card shadow p-3">
             <h4 class="card-title">🏆 퀴즈 완료!</h4>
             <div class="mb-5">
@@ -86,41 +102,44 @@
               { q: "이재용은 인도 사람이다.", a: "no" },
             ],
             result: [],
+            cpLst: [],
+            btnBool: false,
           };
-        },
-        computed: {
-          randomItems() {
-            return this.questions.sort(() => Math.random() - 0.5).slice(0, 5);
-          },
         },
         methods: {
           checkAns(ans) {
             if (this.idx <= 4) {
+              let currentQuestion = this.cpLst[this.idx];
               setTimeout(() => {
                 this.idx++;
                 this.msg = "";
+                this.btnBool = false;
               }, 1000);
-              if (this.questions[this.idx].a == ans) {
+              this.btnBool = true;
+              if (currentQuestion.a == ans) {
                 this.msg = "정답입니다!";
                 this.msgIcon = "fa-award";
                 this.score++;
                 this.result.push({
-                  q: this.questions[this.idx].q,
+                  q: currentQuestion.q,
                   rst: "정답",
                 });
               } else {
                 this.msg = "틀렸어요!";
                 this.msgIcon = "fa-face-frown";
                 this.result.push({
-                  q: this.questions[this.idx].q,
+                  q: currentQuestion.q,
                   rst: "오답",
                 });
               }
+              this.btnBool = true;
             }
           },
         },
         mounted() {
-          this.randomItems;
+          this.cpLst = this.questions
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 5);
         },
       }).mount("#app");
     </script>
