@@ -1,131 +1,41 @@
 <template>
-  <div class="container">
-    <h1>카페 주문 앱</h1>
-    <h2>메뉴 선택</h2>
-    <MenuList :menus="menuList" @select-drink="selectDrink" />
-    <div v-if="selectedDrink" class="selected-drink">
-      선택한 음료: {{ selectedDrink.name }} ({{ selectedDrink.price }}원)
-    </div>
-    <div v-if="selectedDrink" class="select-options">
-      <DrinkOptions
-        :selectedDrink="selectedDrink"
-        @options-changed="optionsChanged"
-      />
-    </div>
-
-    <div v-if="selectedDrink" class="options-changed">
-      <h3>현재 선택 옵션</h3>
-      <p>사이즈: {{ selectedOptions.size }}</p>
-      <p>샷 추가: {{ selectedOptions.extraShot ? '추가함' : '추가 안 함' }}</p>
-      <p>얼음량: {{ selectedOptions.ice }}</p>
-    </div>
-    <div v-if="selectedDrink && selectedOptions" class="order-summary">
-      <OrderSummary
-        :drink="selectedDrink"
-        :optionData="selectedOptions"
-        @place-order="handlePlaceOrder"
-      />
-    </div>
-    <div class="order-history">
-      <h2>✔ 주문 내역</h2>
-      <div v-if="!orderHistory.length">주문 내역이 없습니다.</div>
-      <OrderHistory :orders="orderHistory" />
-    </div>
-    <button
-      v-if="orderHistory.length > 0"
-      @click="changeStats"
-      class="stats-btn"
-    >
-      {{ msg }}
-    </button>
-    <div class="order-statistics" v-if="showStats">
-      <Statistics :orders="orderHistory" />
-    </div>
+  <div
+    class="container d-flex flex-column align-items-center justify-content-center"
+  >
+    <h1>improv-acting-lab 🦹🏻‍♀️</h1>
+    <LineReadyButton @ready="handleReady"
+      ><div class="card"></div
+    ></LineReadyButton>
   </div>
 </template>
-
 <script>
-import MenuList from './components/MenuList.vue';
-import DrinkOptions from './components/DrinkOptions.vue';
-import OrderSummary from './components/OrderSummary.vue';
-import OrderHistory from './components/OrderHistory.vue';
-import Statistics from './components/Statistics.vue';
+import LineReadyButton from './components/LineReadyButton.vue';
 export default {
   name: 'App',
   components: {
-    MenuList,
-    DrinkOptions,
-    OrderSummary,
-    OrderHistory,
-    Statistics,
+    LineReadyButton,
   },
   data() {
-    return {
-      menuList: [
-        { name: '아메리카노', price: 4000 },
-        { name: '카페라떼', price: 4500 },
-        { name: '바닐라라떼', price: 4800 },
-        { name: '콜드브루', price: 5000 },
-      ],
-      selectedDrink: null,
-      selectedOptions: {
-        size: 'Medium', // 기본값
-        extraShot: false,
-        ice: '보통',
-      },
-      orderHistory: [],
-      showStats: false,
-      msg: '통계보기',
-    };
+    return {};
   },
   methods: {
-    selectDrink(drink) {
-      this.selectedDrink = drink; // 선택한 메뉴 객체 저장
-      this.selectedOptions = {
-        size: 'Medium',
-        extraShot: false,
-        ice: '보통',
-      };
-    },
-    optionsChanged(options) {
-      this.selectedOptions = options;
-    },
-    submitOrder() {
-      alert(`[${this.selectedDrink.name}] 주문이 완료되었습니다!`);
-      this.selectedDrink = null;
-      this.selectedOptions = {
-        size: 'Medium',
-        extraShot: false,
-        ice: '보통',
-      };
-    },
-    handlePlaceOrder() {
-      alert(`[${this.selectedDrink.name}] 주문이 완료되었습니다!`);
-      this.orderHistory.unshift({
-        time: new Date().toLocaleString(),
-        drinkName: this.selectedDrink.name,
-        size: this.selectedOptions.size,
-        extraShot: this.selectedOptions.extraShot,
-        ice: this.selectedOptions.ice,
-        price: this.selectedDrink.price,
-      });
-      console.log(this.orderHistory);
-      this.selectedDrink = null;
-      this.selectedOptions = {
-        size: 'Medium',
-        extraShot: false,
-        ice: '보통',
-      };
-    },
-    changeStats() {
-      this.showStats = !this.showStats;
-      this.msg = this.showStats ? '통계 숨기기' : '통계 보기';
+    handleReady() {
+      console.log('대사 준비 완료!');
     },
   },
 };
 </script>
-<!-- orderHistory 배열을 props로 Statistics 컴포넌트에 전달하도록 준비하세요.
-주문 내역이 하나 이상(orderHistory.length > 0)일 때만 버튼이 나타나도록 구현하세요.
-버튼에는 조건에 따라 통계 보기 또는 통계 숨기기 라는 텍스트가 표시되도록 합니다.
-버튼 클릭 시 showStats 라는 불리언 변수를 true/false로 토글하세요.
-showStats가 true일 때만 Statistics 컴포넌트가 렌더링되도록 합니다. -->
+<!-- :흰색_확인_표시: 부모 컴포넌트(App.vue) 요구사항
+LineReadyButton 컴포넌트를 가져와 사용하세요.
+@ready 이벤트를 받아 콘솔에 메시지를 출력하도록 handleReady 메서드를 작성하세요.
+slot으로 "오늘도 넌 멋질 거야! :마이크: 자신 있게 무대에 올라가!" 와 같은 응원 멘트를 전달하세요. -->
+<!-- 오늘도 넌 멋질 거야! :마이크: 자신 있게 무대에 올라가! -->
+<style>
+.card {
+  background-color: #f1f2f6;
+  border: 1px solid #dfe4ea;
+  border-radius: 12px;
+  padding: 14px;
+  max-width: 400px;
+}
+</style>
