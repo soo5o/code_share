@@ -1,0 +1,9 @@
+<template>
+  카테고리
+  <ul>
+    <li>전체</li>
+    <li>리빙</li>
+    <li>디지털</li>
+    <li>취미</li>
+  </ul>
+</template>
