@@ -23,6 +23,12 @@ provide('cartState', state);
 provide('addToCart', addToCart);
 </script>
 <style>
+.layout {
+  display: flex; /* 가로 배치 */
+}
+.main {
+  flex-grow: 1; /* 남은 공간 차지 */
+}
 .page {
   display: flex;
   flex-direction: column;
