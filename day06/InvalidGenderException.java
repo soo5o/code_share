@@ -1,4 +1,4 @@
-package test.day06;
+package day06;
 
 public class InvalidGenderException extends Exception {
     public InvalidGenderException(String msg) {
